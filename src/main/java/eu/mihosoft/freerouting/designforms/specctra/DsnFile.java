@@ -46,10 +46,11 @@ public class DsnFile
     }
 
     /**
-     * Creates a routing board from a Specctra dns file.
-     * The parameters p_item_observers and p_item_id_no_generator are used,
-     * in case the board is embedded into a host system.
-     * Returns false, if an error occured.
+     * Creates a routing board from a Specctra DSN file.
+     * The parameters p_item_observers and p_item_id_no_generator are used, in case the board is embedded into a host system.
+     * @param p_input_stream The input file stream of the DSN file
+     * @param p_board_handling The contents of the DSN file will be inserted to the p_board_handling.get_routing_board() (type of eu.mihosoft.freerouting.board.RoutingBoard) board
+     * @return false, if an error occurred.
      */
     public static ReadResult read(java.io.InputStream p_input_stream, eu.mihosoft.freerouting.interactive.IBoardHandling p_board_handling,
                                   eu.mihosoft.freerouting.board.BoardObservers p_observers, eu.mihosoft.freerouting.datastructures.IdNoGenerator p_item_id_no_generator, TestLevel p_test_level)

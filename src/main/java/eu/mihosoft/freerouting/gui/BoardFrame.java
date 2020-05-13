@@ -179,6 +179,13 @@ public class BoardFrame extends javax.swing.JFrame
         if (p_is_import) {
             read_result = board_panel.board_handling.import_design(p_input_stream, this.board_observers,
                     this.item_id_no_generator, this.test_level);
+
+            /**
+             * TODO: Component rotation feature: We have the loaded board in board_panel.board_handling.get_routing_board().
+             * It has the .components property, and every component has a rotation_in_degree field.
+             * We would need to .clone() this board and modify those rotation values to test the different cases.
+             */
+
             if (read_result == DsnFile.ReadResult.OK) {
                 viewport_position = new java.awt.Point(0, 0);
                 initialize_windows();

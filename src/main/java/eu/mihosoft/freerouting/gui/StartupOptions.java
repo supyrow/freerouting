@@ -18,6 +18,7 @@ public class StartupOptions {
     String design_rules_filename = null;
     String design_input_directory_name = null;
     int max_passes = 99999;
+    String rotation_rules = null;
     java.util.Locale current_locale = java.util.Locale.ENGLISH;
 
     private StartupOptions() {
@@ -37,27 +38,36 @@ public class StartupOptions {
         for (int i = 0; i < p_args.length; ++i) {
             try {
                 if (p_args[i].startsWith("-de")) {
-                    // the design file is provided
+                    // de: dsn input file
                     if (p_args.length > i + 1 && !p_args[i + 1].startsWith("-")) {
                         single_design_option = true;
                         design_input_filename = p_args[i + 1];
                     }
                 } else if (p_args[i].startsWith("-di")) {
-                    // the design directory is provided
+                    // di: dsn input directory
                     if (p_args.length > i + 1 && !p_args[i + 1].startsWith("-")) {
                         design_input_directory_name = p_args[i + 1];
                     }
                 } else if (p_args[i].startsWith("-do")) {
+                    // do: ses output file
                     if (p_args.length > i + 1 && !p_args[i + 1].startsWith("-")) {
                         design_output_filename = p_args[i + 1];
                     }
                 } else if (p_args[i].startsWith("-dr")) {
+                    // dr: rules file
                     if (p_args.length > i + 1 && !p_args[i + 1].startsWith("-")) {
                         design_rules_filename = p_args[i + 1];
                     }
                 } else if (p_args[i].startsWith("-mp")) {
+                    // mp: maximum passes
                     if (p_args.length > i + 1 && !p_args[i + 1].startsWith("-")) {
                         max_passes = Integer.decode(p_args[i + 1]);
+                    }
+                } else if (p_args[i].startsWith("-cr")) {
+                    // cr: component rotation rules
+                    if (p_args.length > i + 1 && !p_args[i + 1].startsWith("-")) {
+                        rotation_rules = p_args[i + 1];
+                        rotation_rules = "U1:90,U2:180";
                     }
                 } else if (p_args[i].startsWith("-l")) {
                     // the locale is provided
